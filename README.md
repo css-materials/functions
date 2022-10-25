@@ -1,1 +1,1 @@
-# pipes-and-functions-in-r
+# functions-in-r
