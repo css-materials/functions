@@ -5,6 +5,9 @@
 # QUESTION 3: practice writing anonymous functions
 # QUESTION 4: practice conditional returns
 # QUESTION 5: practices loops, conditionals, and stop() statements in a function
+# QUESTION 6: practice writing documentation
+# QUESTION 7: practice using {{}}
+
 
 
 # QUESTION 1. Sum the numbers 10 and 20, and divide the total by 2 
@@ -25,6 +28,7 @@ add_two <- function(number1, number2) {
 }
 add_two(10, 20)
 add_two(5, 7)
+
 
 
 # QUESTION 2. Write code to convert 25 degree Celsius to Fahrenheit 
@@ -89,6 +93,7 @@ fizzbuzz(3)
 fizzbuzz(28)
 
 
+
 # QUESTION 5. Write a function that calculates the mean of a numeric vector.
 # Do not use any R built-in functions, e.g., do not use length(), sum(), etc.
 # Then add a check to evaluate if the input vector is numeric
@@ -147,3 +152,36 @@ mean_vect(a)
 
 b <- c(2, 4, "6")
 mean_vect(b)
+
+
+
+# QUESTION 6. Add the documentation the function you wrote in question 4 or in 5.
+
+
+
+# QUESTION 7. Given this plot, rewrite it as a function.
+# Your function should take three arguments like that (df, var, binwidth = NULL)
+
+# import library and data
+library(tidyverse)
+data(diamonds)
+
+# code to re-write 
+diamonds %>% 
+  ggplot(aes(x = carat)) + 
+           geom_histogram(binwidth = 0.1)
+
+# solution
+hist <- function(df, var, binwidth = NULL) {
+  df %>% 
+  ggplot(aes(x = {{ var }})) + 
+  geom_histogram(binwidth = binwidth)
+}
+
+# call the function (both codes work)
+hist(diamonds, carat, 0.1)
+diamonds %>% hist(carat, 0.1)
+
+# can also add labels
+diamonds %>% hist(carat, 0.1) +
+  labs(x = "Size (in carats)", y = "Number of diamonds")
