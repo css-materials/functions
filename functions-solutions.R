@@ -99,6 +99,16 @@ fizzbuzz(28)
 # Then add a check to evaluate if the input vector is numeric
 # If not, use stop() to stop the code and write a message
 
+
+# Solution with other built-in functions
+my_mean <- function(vector) {
+  total_values <- length(vector)
+  result <- (sum(vector) /total_values)
+  return(list(total_values, result))
+}
+my_mean(1:10)
+
+
 # Solution without built-in functions
 mean_vect <- function(vector) {
   
